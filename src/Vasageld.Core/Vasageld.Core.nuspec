@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>EldSharp.Vasageld</id>
+    <version>$version$</version>
+    <title>EldSharp.Vasageld</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://raw.github.com/iskeld/Vasageld/master/LICENSE</licenseUrl>
+    <projectUrl>http://github.com/iskeld/Vasageld</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial version.</releaseNotes>
+    <copyright>Copyright 2013 Maciej Woźniak</copyright>
+    <tags>AssemblyVersion AssemblyFileVersion AssemblyInformationalVersion version</tags>
+  </metadata>
+</package>
