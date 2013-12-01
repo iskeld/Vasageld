@@ -9,14 +9,14 @@ namespace EldSharp.Vasageld.Testing.Sandbox
         {
             string path = @"h:\AssemblyInfo.cs";
             FileIncrementor incrementor = new FileIncrementor(path);
-            incrementor.Increment(new SimpleProvider());
+            var results = incrementor.Increment(new SimpleProvider(), Versions.AssemblyFileVersion | Versions.AssemblyInformationalVersion);
         }
     }
 
     public class SimpleProvider : IVersionsProvider
     {
         public Versions SupportedVersions {
-            get { return Versions.All; }
+            get { return Versions.AssemblyFileVersion | Versions.AssemblyInformationalVersion; }
         }
         public string GetAssemblyVersion(string current)
         {

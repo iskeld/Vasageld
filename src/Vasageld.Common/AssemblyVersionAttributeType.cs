@@ -1,4 +1,4 @@
-﻿namespace EldSharp.Vasageld.Core
+﻿namespace EldSharp.Vasageld.Common
 {
     public enum AssemblyVersionAttributeType
     {

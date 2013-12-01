@@ -1,4 +1,5 @@
 ﻿using System;
+using EldSharp.Vasageld.Common;
 using EldSharp.Vasageld.Core.Interfaces;
 using ICSharpCode.NRefactory.CSharp;
 using ICSharpCode.NRefactory.CSharp.Resolver;
@@ -42,7 +43,7 @@ namespace EldSharp.Vasageld.Core.Utils
                 return;
             }
 
-            CSharpInvocationResolveResult ctorInvocation = (CSharpInvocationResolveResult)_resolver.Resolve(attribute);
+            var ctorInvocation = (CSharpInvocationResolveResult)_resolver.Resolve(attribute);
             ResolveResult argumentResolveResult = ctorInvocation.Arguments[0];
 
             if (!argumentResolveResult.IsCompileTimeConstant)

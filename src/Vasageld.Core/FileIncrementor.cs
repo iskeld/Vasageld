@@ -82,7 +82,11 @@ namespace EldSharp.Vasageld.Core
 
             List<AttributeValuePair> attributesToChange = new List<AttributeValuePair>();
 
-            foreach (AssemblyVersionAttributeType attributeType in GetTypesFromVersions(versionsToIncrement))
+            var versionTypesToIncrement = GetTypesFromVersions(versionsToIncrement);
+
+            var resultVersions = new SafeVersionsDictionary();
+
+            foreach (AssemblyVersionAttributeType attributeType in versionTypesToIncrement)
             {
                 AttributeValuePair pair = results[attributeType];
                 if (pair == null)
@@ -93,20 +97,23 @@ namespace EldSharp.Vasageld.Core
                 string versionFromProvider = GetVersionFromProvider(attributeType, versionsProvider, pair.Version);
                 if (string.IsNullOrEmpty(versionFromProvider) || (versionFromProvider == pair.Version))
                 {
+                    resultVersions[attributeType] = pair.Version;
                     continue;
                 }
 
+                resultVersions[attributeType] = versionFromProvider;
                 attributesToChange.Add(new AttributeValuePair(pair.Attribute, versionFromProvider));
             }
 
             string newContents = ReplaceValues(contents, attributesToChange, resolver, compilation);
 
             _fileSystem.WriteAllText(_file, newContents);
+
             // TODO
-            return new IncrementationResult();
+            return new IncrementationResult(resultVersions);
         }
 
-        private string ReplaceValues(string contents, IEnumerable<AttributeValuePair> attributesToChange, CSharpAstResolver resolver, ICompilation compilation)
+        private static string ReplaceValues(string contents, IEnumerable<AttributeValuePair> attributesToChange, CSharpAstResolver resolver, ICompilation compilation)
         {
             var document = new StringBuilderDocument(contents);
             var formattingOptions = FormattingOptionsFactory.CreateAllman();

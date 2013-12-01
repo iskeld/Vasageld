@@ -1,4 +1,6 @@
-﻿namespace EldSharp.Vasageld.Core.Interfaces
+﻿using EldSharp.Vasageld.Common;
+
+namespace EldSharp.Vasageld.Core.Interfaces
 {
     public interface IAttributeTypeVerifier
     {

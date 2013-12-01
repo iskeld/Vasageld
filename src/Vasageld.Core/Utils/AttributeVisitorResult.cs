@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EldSharp.Vasageld.Common;
 
 namespace EldSharp.Vasageld.Core.Utils
 {

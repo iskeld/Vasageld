@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using EldSharp.Vasageld.Common;
 using EldSharp.Vasageld.Core.Interfaces;
 
 namespace EldSharp.Vasageld.Core.Utils
